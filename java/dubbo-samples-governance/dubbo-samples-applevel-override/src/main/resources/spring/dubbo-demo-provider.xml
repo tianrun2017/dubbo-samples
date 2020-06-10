@@ -25,10 +25,15 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <context:property-placeholder/>
 
-    <dubbo:application name="governance-appoverride-provider"/>
+    <dubbo:application name="governance-appoverride-provider">
+        <dubbo:parameter key="qos.enable" value="false"/>
+    </dubbo:application>
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
-    <dubbo:protocol port="${dubbo.port:20880}"/>
+    <!--    <dubbo:protocol port="${dubbo.port:20880}"/>-->
+
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:protocol name="dubbo" port="20881"/>
 
     <bean id="demoService" class="org.apache.dubbo.samples.governance.impl.DemoServiceImpl"/>
     <dubbo:service interface="org.apache.dubbo.samples.governance.api.DemoService" ref="demoService"/>

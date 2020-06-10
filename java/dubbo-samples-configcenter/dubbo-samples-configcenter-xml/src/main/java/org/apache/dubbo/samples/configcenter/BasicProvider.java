@@ -26,7 +26,7 @@ import java.util.concurrent.CountDownLatch;
 public class BasicProvider {
 
     public static void main(String[] args) throws Exception {
-        new EmbeddedZooKeeper(2181, false).start();
+      //  new EmbeddedZooKeeper(2181, false).start();
         ZKTools.generateDubboProperties();
         Thread.sleep(2000);
 

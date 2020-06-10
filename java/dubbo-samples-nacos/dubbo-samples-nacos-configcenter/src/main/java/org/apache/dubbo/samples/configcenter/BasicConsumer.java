@@ -25,11 +25,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BasicConsumer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/configcenter-consumer.xml");
         context.start();
         DemoService demoService = context.getBean("demoService", DemoService.class);
-        String hello = demoService.sayHello("nacos");
-        System.out.println("result: " + hello);
+        while (true) {
+            String hello = demoService.sayHello("nacos");
+            System.out.println("result: " + hello);
+            Thread.sleep(1000);
+
+        }
     }
 }

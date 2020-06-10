@@ -5,6 +5,8 @@
   ```
   cd src/main/resources/docker
   docker-compose up
+
+    docker-compose -f docker-compose.yaml up -d 
   ```
   
 2. Start two dubbo provider `org.apache.dubbo.samples.configcenter.BasicProvider`, make sure one has the system property `-Ddubbo.port=20880` and the other with `-Ddubbo.port=20881`

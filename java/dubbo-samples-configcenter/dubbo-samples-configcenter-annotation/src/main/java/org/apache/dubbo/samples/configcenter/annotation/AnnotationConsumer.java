@@ -19,6 +19,7 @@
 
 package org.apache.dubbo.samples.configcenter.annotation;
 
+import java.util.concurrent.CountDownLatch;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.apache.dubbo.samples.configcenter.annotation.action.AnnotationAction;
 
@@ -35,6 +36,7 @@ public class AnnotationConsumer {
         final AnnotationAction annotationAction = (AnnotationAction) context.getBean("annotationAction");
         String hello = annotationAction.doSayHello("world");
         System.out.println("result :" + hello);
+        new CountDownLatch(1).await();
     }
 
     @Configuration

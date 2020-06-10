@@ -19,13 +19,19 @@
 
 package org.apache.dubbo.samples.version.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.samples.version.api.VersionService;
 
 public class VersionServiceImpl implements VersionService {
 
     @Override
     public String sayHello(String name) {
-        return "hello, " + name;
+        System.err.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " + name +
+            ", request from consumer: " + RpcContext.getContext().get());
+        return "Hello " + name + ", response from provider: " + RpcContext.getContext().getLocalAddress();
+
     }
 
 }

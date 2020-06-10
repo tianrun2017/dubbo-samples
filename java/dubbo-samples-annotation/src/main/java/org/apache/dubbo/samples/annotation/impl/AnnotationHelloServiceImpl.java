@@ -22,18 +22,18 @@ import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.samples.annotation.AnnotationConstants;
 import org.apache.dubbo.samples.annotation.api.HelloService;
 
-@Service(version = AnnotationConstants.VERSION, methods = {@Method(name = "sayGoodbye", timeout = 250, retries = 0)})
+@Service(version = AnnotationConstants.VERSION, methods = {@Method(name = "sayGoodbye", timeout = 250, retries = 5)})
 public class AnnotationHelloServiceImpl implements HelloService {
 
     @Override
     public String sayHello(String name) {
-        System.out.println("provider received invoke of sayHello: " + name);
+        System.err.println("provider received invoke of sayHello: " + name);
         sleepWhile();
         return "Annotation, hello " + name;
     }
 
     public String sayGoodbye(String name) {
-        System.out.println("provider received invoke of sayGoodbye: " + name);
+        System.err.println("provider received invoke of sayGoodbye: " + name);
         sleepWhile();
         return "Goodbye, " + name;
     }

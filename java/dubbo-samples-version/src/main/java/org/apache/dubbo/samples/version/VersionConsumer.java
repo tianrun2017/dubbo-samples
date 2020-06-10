@@ -29,9 +29,17 @@ public class VersionConsumer {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/version-consumer.xml");
         context.start();
 
-        VersionService versionService = (VersionService) context.getBean("versionService");
-        for (int i = 0; i < 10000; i++) {
-            String hello = versionService.sayHello("world");
+        VersionService versionService1 = (VersionService) context.getBean("versionService1");
+        for (int i = 0; i < 2; i++) {
+            String hello = versionService1.sayHello("world");
+            System.out.println(hello);
+            Thread.sleep(2000);
+        }
+
+
+        VersionService versionService2 = (VersionService) context.getBean("versionService2");
+        for (int i = 0; i < 2; i++) {
+            String hello = versionService2.sayHello("world");
             System.out.println(hello);
             Thread.sleep(2000);
         }

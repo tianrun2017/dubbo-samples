@@ -19,20 +19,19 @@
 
 package org.apache.dubbo.samples.configcenter;
 
-import org.apache.dubbo.samples.configcenter.util.NacosUtils;
+import java.util.concurrent.CountDownLatch;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.concurrent.CountDownLatch;
-
 public class BasicProvider {
-    static {
-        try {
-            NacosUtils.writeDubboProperties();
-            Thread.sleep(1000);
-        } catch (Throwable t) {
-            // ignore
-        }
-    }
+
+    //    static {
+    //        try {
+    //            NacosUtils.writeDubboProperties();
+    //            Thread.sleep(1000);
+    //        } catch (Throwable t) {
+    //            // ignore
+    //        }
+    //    }
 
     public static void main(String[] args) throws Exception {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/configcenter-provider.xml");
@@ -42,5 +41,4 @@ public class BasicProvider {
         System.out.println("dubbo service started");
         new CountDownLatch(1).await();
     }
-
 }

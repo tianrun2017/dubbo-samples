@@ -29,10 +29,14 @@
 
     <dubbo:protocol name="dubbo" port="20880"/>
 
-    <bean id="versionService" class="org.apache.dubbo.samples.version.impl.VersionServiceImpl"/>
+    <bean id="versionService1" class="org.apache.dubbo.samples.version.impl.VersionServiceImpl"/>
+
+    <dubbo:service interface="org.apache.dubbo.samples.version.api.VersionService" version="1.0.0" ref="versionService1"/>
 
 
-    <dubbo:service interface="org.apache.dubbo.samples.version.api.VersionService" version="1.0.0"
-                   ref="versionService"/>
+    <bean id="versionService2" class="org.apache.dubbo.samples.version.impl.VersionServiceImpl2"/>
+
+    <dubbo:service interface="org.apache.dubbo.samples.version.api.VersionService" version="2.0.0" ref="versionService2"/>
+
 
 </beans>

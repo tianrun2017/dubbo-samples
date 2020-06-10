@@ -39,7 +39,7 @@ import static org.apache.dubbo.common.constants.CommonConstants.RELEASE_KEY;
 public class SimpleRegistryAnnotationProvider {
 
     public static void main(String[] args) throws Exception {
-        new EmbeddedZooKeeper(2181, false).start();
+     //   new EmbeddedZooKeeper(2181, false).start();
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProviderConfiguration.class);
         context.start();

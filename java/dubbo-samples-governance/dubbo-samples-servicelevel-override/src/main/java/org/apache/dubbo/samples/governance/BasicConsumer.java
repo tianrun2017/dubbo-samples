@@ -19,18 +19,20 @@
 
 package org.apache.dubbo.samples.governance;
 
+import java.util.concurrent.CountDownLatch;
 import org.apache.dubbo.samples.governance.api.DemoService;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BasicConsumer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-demo-consumer.xml");
         context.start();
 
         DemoService demoService = context.getBean("demoService", DemoService.class);
-        String hello = demoService.sayHello("world", 500);
-        System.out.println(hello);
+        String hello = demoService.sayHello("world", 5000);
+        System.err.println(hello);
+
+        new CountDownLatch(1).await();
     }
 }

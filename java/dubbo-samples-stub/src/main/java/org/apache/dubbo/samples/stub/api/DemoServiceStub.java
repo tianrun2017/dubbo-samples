@@ -34,13 +34,13 @@ public class DemoServiceStub implements DemoService {
 
     @Override
     public String sayHello(String name) {
-        logger.info("before execute remote service, parameter: " + name);
+        logger.warn("before execute remote service, parameter: " + name);
         try {
             String result = demoService.sayHello(name);
-            logger.info("after execute remote service, result: " + result);
+            logger.warn("after execute remote service, result: " + result);
             return "stub - " + result;
         } catch (Exception e) {
-            logger.warn("fail to execute service", e);
+            logger.error("fail to execute service", e);
             return null;
         }
     }

@@ -34,14 +34,16 @@ public class ZKTools {
         client.start();
 
         generateDubboPropertiesForGlobal();
-        generateDubboPropertiesForApp();
+        //generateDubboPropertiesForApp();
     }
 
     public static void generateDubboPropertiesForGlobal() {
         String str = "dubbo.registry.address=zookeeper://" + zookeeperHost + ":2181\n" +
                 "dubbo.metadata-report.address=zookeeper://" + zookeeperHost + ":2181\n" +
                 "dubbo.protocol.port=-1\n" +
-                "dubbo.registry.simplified=true\n";
+                "dubbo.registry.simplified=true\n"+
+                "dubbo.reference.org.apache.dubbo.samples.configcenter.api.DemoService.timeout=1100"
+            ;
 
         System.out.println(str);
 

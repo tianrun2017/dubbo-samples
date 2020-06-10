@@ -31,6 +31,7 @@ public class DirectConsumer {
         context.start();
         DirectService directService = (DirectService) context.getBean("directService");
         String hello = directService.sayHello("world");
-        System.out.println(hello);
+        System.err.println(hello);
+        System.err.println("--------------------------------------------------------------");
     }
 }

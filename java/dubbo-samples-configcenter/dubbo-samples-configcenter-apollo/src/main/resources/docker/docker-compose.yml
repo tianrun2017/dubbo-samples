@@ -7,7 +7,7 @@ services:
     depends_on:
       - apollo-db
     ports:
-      - "8080:8080"
+      - "8090:8080"
       - "8070:8070"
     links:
       - apollo-db

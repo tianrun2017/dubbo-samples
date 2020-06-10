@@ -26,8 +26,10 @@ public class ZKTools {
 
     public static void main(String[] args) throws Exception {
         initClient();
-        generateServiceLevelOverride(5000);
-        generateApplicationLevelOverride(2000);
+        //优先service配置
+        generateServiceLevelOverride(2200);
+        //application配置：
+        generateApplicationLevelOverride(1200);
     }
 
     public static void initClient() {
@@ -38,7 +40,7 @@ public class ZKTools {
 
     public static void generateServiceLevelOverride(long timeout) {
         String str = "" +
-                "# All Consumers that consume the service org.apache.dubbo.samples.governance.api.DemoService will increase the timeout value to 6000\n" +
+                "# All Consumers that consume the service org.apache.dubbo.samples.governance.api.DemoService will increase the timeout value to "+timeout+"\n" +
                 "---\n" +
                 "configVersion: v2.7\n" +
                 "scope: service\n" +
@@ -66,7 +68,7 @@ public class ZKTools {
 
     public static void generateApplicationLevelOverride(long timeout) {
         String str = "" +
-                "# All Consumers that consume the service org.apache.dubbo.samples.governance.api.DemoService will increase the timeout value to 6000\n" +
+                "# All Consumers that consume the service org.apache.dubbo.samples.governance.api.DemoService will increase the timeout value to "+timeout+"\n" +
                 "---\n" +
                 "configVersion: v2.7\n" +
                 "scope: application\n" +

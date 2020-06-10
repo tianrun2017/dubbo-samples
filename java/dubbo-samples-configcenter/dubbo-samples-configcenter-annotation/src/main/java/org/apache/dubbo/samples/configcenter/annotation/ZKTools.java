@@ -16,14 +16,15 @@
  */
 package org.apache.dubbo.samples.configcenter.annotation;
 
-import org.apache.dubbo.common.utils.StringUtils;
-
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.dubbo.common.utils.StringUtils;
 
 public class ZKTools {
+
     private static String zookeeperHost = System.getProperty("zookeeper.address", "127.0.0.1");
+
     private static CuratorFramework client;
 
     public static void main(String[] args) throws Exception {
@@ -32,7 +33,7 @@ public class ZKTools {
 
     public static void generateDubboProperties() {
         client = CuratorFrameworkFactory.newClient(zookeeperHost + ":2181", 60 * 1000, 60 * 1000,
-                new ExponentialBackoffRetry(1000, 3));
+            new ExponentialBackoffRetry(1000, 3));
         client.start();
 
         generateDubboPropertiesForGlobal();
@@ -42,11 +43,12 @@ public class ZKTools {
 
     public static void generateDubboPropertiesForGlobal() {
         String str = "dubbo.registry.address=zookeeper://" + zookeeperHost + ":2181\n" +
-                "#global config for consumer\n" +
-                "dubbo.consumer.timeout=6000\n" +
-                "#global config for provider\n" +
-                "dubbo.protocol.port=20990\n" +
-                "dubbo.provider.timeout=5000";
+            "#global config for consumer\n" +
+            "dubbo.consumer.timeout=1600\n" +
+            "#global config for provider\n" +
+            "dubbo.protocol.port=20990\n" +
+            "dubbo.provider.timeout=1500\n"+
+            "dubbo.application.qosEnable=false\n";
 
         System.out.println(str);
 
@@ -62,7 +64,8 @@ public class ZKTools {
     }
 
     public static void generateDubboPropertiesForConsumer() {
-        String str = "dubbo.consumer.timeout=6666";
+        String str = "dubbo.consumer.timeout=3000\n"+
+            "dubbo.application.qosEnable=false\n";
 
         System.out.println(str);
 
@@ -79,7 +82,8 @@ public class ZKTools {
 
     public static void generateDubboPropertiesForProvider() {
         String str = "dubbo.protocol.threadpool=fixed\n" +
-                "dubbo.protocol.threads=100";
+            "dubbo.protocol.threads=100\n"+
+            "dubbo.application.qosEnable=false\n";
 
         System.out.println(str);
 
@@ -104,5 +108,4 @@ public class ZKTools {
         }
         return path.replace("/dubbo/config/", "").replaceAll("/", ".");
     }
-
 }

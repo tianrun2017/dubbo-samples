@@ -32,6 +32,6 @@ public class StubConsumer {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/stub-consumer.xml");
         context.start();
         DemoService demoService = context.getBean("demoService", DemoService.class);
-        logger.info("result: " + demoService.sayHello("dubbo"));
+        logger.warn("result: " + demoService.sayHello("dubbo"));
     }
 }

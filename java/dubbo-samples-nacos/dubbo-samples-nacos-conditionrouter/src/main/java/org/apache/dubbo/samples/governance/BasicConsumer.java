@@ -32,10 +32,16 @@ public class BasicConsumer {
         DemoService demoService = context.getBean("demoService", DemoService.class);
         DemoService2 demoService2 = context.getBean("demoService2", DemoService2.class);
 
-        String hello = demoService.sayHello("world");
-        System.out.println("result: " + hello);
+        while (true) {
+            String hello = demoService.sayHello("world");
+            System.err.println("result: " + hello);
 
-        String hello2 = demoService2.sayHello("world again");
-        System.out.println("result: " + hello2);
+            String hello2 = demoService2.sayHello("world again");
+            System.err.println("result: " + hello2);
+
+            System.err.println("===============================================");
+
+            Thread.sleep(1000);
+        }
     }
 }

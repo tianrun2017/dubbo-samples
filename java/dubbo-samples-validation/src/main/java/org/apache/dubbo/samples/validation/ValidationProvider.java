@@ -26,7 +26,7 @@ import java.util.concurrent.CountDownLatch;
 public class ValidationProvider {
 
     public static void main(String[] args) throws Exception {
-        new EmbeddedZooKeeper(2181, false).start();
+       // new EmbeddedZooKeeper(2181, false).start();
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/validation-provider.xml");
         context.start();

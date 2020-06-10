@@ -33,7 +33,7 @@ import java.util.concurrent.CountDownLatch;
 public class AnnotationProvider {
 
     public static void main(String[] args) throws Exception {
-        new EmbeddedZooKeeper(2181, false).start();
+       // new EmbeddedZooKeeper(2181, false).start();
         ZKTools.generateDubboProperties();
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProviderConfiguration.class);

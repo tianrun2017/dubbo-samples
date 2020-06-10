@@ -25,11 +25,17 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <context:property-placeholder/>
 
-    <dubbo:application name="governance-tagrouter-provider"/>
+    <dubbo:application name="governance-tagrouter-provider">
+        <dubbo:parameter key="qos.enable" value="false"/>
+    </dubbo:application>
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
-    <dubbo:protocol name="dubbo" port="${dubbo.port:-1}" heartbeat="10000"/>
+    <!--    <dubbo:protocol name="dubbo" port="${dubbo.port:-1}" heartbeat="10000"/>-->
+
+    <dubbo:protocol name="dubbo" port="20880" heartbeat="10000"/>
+
+    <dubbo:protocol name="dubbo" port="20881" heartbeat="10000"/>
 
     <dubbo:config-center highest-priority="false" address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
