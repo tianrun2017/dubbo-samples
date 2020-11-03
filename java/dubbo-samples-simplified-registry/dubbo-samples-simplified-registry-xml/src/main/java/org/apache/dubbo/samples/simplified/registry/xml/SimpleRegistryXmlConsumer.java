@@ -25,12 +25,13 @@ import org.apache.dubbo.samples.simplified.registry.xml.api.DemoService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import static org.apache.dubbo.common.constants.CommonConstants.RELEASE_KEY;
 
 public class SimpleRegistryXmlConsumer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/simplified-consumer.xml");
         context.start();
 
@@ -39,6 +40,8 @@ public class SimpleRegistryXmlConsumer {
 
         String hello = demoService.sayHello("world");
         System.out.println(hello);
+        new CountDownLatch(1).await();
+
     }
 
     private static void printServiceData() {

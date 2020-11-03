@@ -27,9 +27,12 @@ public class ZKTools {
 
     public static void main(String[] args) throws Exception {
         initClient();
+        //应用层provider权重
         generateAppLevelOverride(1000, 100);
-        generateServiceLevelOverride();
-        generateAppLevelOverrideConsumer();
+        //服务权重
+        //generateServiceLevelOverride();
+        //consumer权重
+        //generateAppLevelOverrideConsumer();
     }
 
     public static void initClient() {

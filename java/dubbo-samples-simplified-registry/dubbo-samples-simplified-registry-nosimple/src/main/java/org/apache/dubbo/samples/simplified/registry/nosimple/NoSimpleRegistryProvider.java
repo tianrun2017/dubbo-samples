@@ -31,7 +31,7 @@ import static org.apache.dubbo.common.constants.CommonConstants.RELEASE_KEY;
 public class NoSimpleRegistryProvider {
 
     public static void main(String[] args) throws Exception {
-        new EmbeddedZooKeeper(2181, false).start();
+        //new EmbeddedZooKeeper(2181, false).start();
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/simplified-provider.xml");
         context.start();

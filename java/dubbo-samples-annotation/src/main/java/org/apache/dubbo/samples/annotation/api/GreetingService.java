@@ -19,6 +19,7 @@ package org.apache.dubbo.samples.annotation.api;
 
 import java.util.concurrent.CompletableFuture;
 
+
 public interface GreetingService {
 
     String greeting(String name);

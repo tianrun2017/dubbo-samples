@@ -40,7 +40,7 @@ public class Configurator {
                 "- addresses: [0.0.0.0]\n" +
                 "  side: consumer\n" +
                 "  parameters:\n" +
-                "    mock: return configured-mock-value\n"
+                "    mock: return 1111111\n"
                 + "...\n";
 
         System.out.println(str);

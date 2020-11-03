@@ -27,6 +27,7 @@ public class ApolloProvider {
 
     public static void main(String[] args) throws Exception {
        // new EmbeddedZooKeeper(2181, false).start();
+        System.setProperty("app.id", "dubbo-configcenter-apollo");
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"spring/configcenter-provider.xml"});
         context.start();
 

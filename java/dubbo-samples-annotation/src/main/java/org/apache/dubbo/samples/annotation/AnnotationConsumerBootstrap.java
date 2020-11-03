@@ -23,6 +23,7 @@ import java.util.concurrent.CountDownLatch;
 import org.apache.dubbo.samples.annotation.action.AnnotationAction;
 import org.apache.dubbo.samples.annotation.config.ConsumerConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.sun.rowset.JdbcRowSetImpl;
 
 public class AnnotationConsumerBootstrap {
 
@@ -31,10 +32,17 @@ public class AnnotationConsumerBootstrap {
         context.start();
         final AnnotationAction annotationAction = (AnnotationAction) context.getBean("annotationAction");
 
-        //System.err.println("hello : " + annotationAction.doSayHello("world"));
-        //System.err.println("goodbye : " + annotationAction.doSayGoodbye("world"));
-        //System.err.println("greeting : " + annotationAction.doGreeting("world"));
-        //System.err.println("reply : " + annotationAction.replyGreeting("world"));
+       // while (true) {
+            //正常调用
+            System.err.println("hello : " + annotationAction.doSayHello("world"));
+            //System.err.println("goodbye : " + annotationAction.doSayGoodbye("world"));
+            //System.err.println("greeting : " + annotationAction.doGreeting("world"));
+            //System.err.println("reply : " + annotationAction.replyGreeting("world"));
+
+            Thread.sleep(1000);
+       // }
+
         new CountDownLatch(1).await();
     }
+
 }

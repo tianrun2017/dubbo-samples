@@ -17,11 +17,15 @@
 package org.apache.dubbo.samples.annotation.impl;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.samples.annotation.AnnotationConstants;
 import org.apache.dubbo.samples.annotation.api.HelloService;
 
+//@Service(version = AnnotationConstants.VERSION, loadbalance = "roundrobin", weight = 1,methods = {@Method(name = "sayGoodbye", timeout = 250, retries = 5)})
 @Service(version = AnnotationConstants.VERSION, methods = {@Method(name = "sayGoodbye", timeout = 250, retries = 5)})
 public class AnnotationHelloServiceImpl implements HelloService {
 
@@ -29,9 +33,15 @@ public class AnnotationHelloServiceImpl implements HelloService {
     public String sayHello(String name) {
         System.err.println("provider received invoke of sayHello: " + name);
         sleepWhile();
-        return "Annotation, hello " + name;
+
+        System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " +
+            name + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
+        return "Hello " + name + ", response from provider: " + RpcContext.getContext().getLocalAddress();
+
+        //return "Annotation, hello " + name;
     }
 
+    @Override
     public String sayGoodbye(String name) {
         System.err.println("provider received invoke of sayGoodbye: " + name);
         sleepWhile();

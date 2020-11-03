@@ -38,7 +38,6 @@ public class NotifyImpl implements Notify {
         System.out.println("oninvoke - request: " + request);
         invokes.add(request);
     }
-
     @Override
     public void onreturn(String response, String request) {
         System.out.println("onreturn - req: " + request + ", res: " + response);

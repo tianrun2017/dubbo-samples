@@ -25,11 +25,13 @@ public class AnnotationGreetingServiceImpl implements GreetingService {
 
     @Override
     public String greeting(String name) {
+
         System.out.println("provider received invoke of greeting: " + name);
         sleepWhile();
         return "Annotation, greeting " + name;
     }
 
+    @Override
     public String replyGreeting(String name) {
         System.out.println("provider received invoke of replyGreeting: " + name);
         sleepWhile();
@@ -38,7 +40,7 @@ public class AnnotationGreetingServiceImpl implements GreetingService {
 
     private void sleepWhile() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

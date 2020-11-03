@@ -19,6 +19,8 @@
 
 package org.apache.dubbo.samples.annotation.action;
 
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.LongAdder;
 import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.samples.annotation.AnnotationConstants;
@@ -30,22 +32,16 @@ import org.springframework.stereotype.Component;
 @Component("annotationAction")
 public class AnnotationAction {
 
-    @Reference(interfaceClass = HelloService.class, version = AnnotationConstants.VERSION /*,
-            methods = {
-                    @Method(
-                            name = "sayHello",
-                            oninvoke = "notify.oninvoke",
-                            onreturn = "notify.onreturn",
-                            onthrow = "notify.onthrow")
-            }
-             */
-    )
+    @Reference(interfaceClass = HelloService.class, version = AnnotationConstants.VERSION)
     private HelloService helloService;
 
+    //@Reference(mock = "fail: return 11111111")
+    //@Reference(mock = "true")
+   // @Reference(interfaceClass = GreetingService.class,version = AnnotationConstants.VERSION,cluster = "broadcast")
     @Reference(interfaceClass = GreetingService.class,
             version = AnnotationConstants.VERSION,
             timeout = 1000,
-            methods = {@Method(name = "greeting", timeout = 3000, retries = 1)})
+            methods = {@Method(name = "greeting", timeout = 3000, retries = -1)})
     private GreetingService greetingService;
 
     public String doSayHello(String name) {

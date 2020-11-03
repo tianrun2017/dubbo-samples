@@ -39,8 +39,10 @@
 
     <dubbo:config-center highest-priority="false" address="nacos://${nacos.address:127.0.0.1}:8848"/>
 
-    <bean id="demoService" class="org.apache.dubbo.samples.governance.impl.DemoServiceImpl"/>
+     <bean id="demoService" class="org.apache.dubbo.samples.governance.impl.DemoServiceImpl"/>
     <dubbo:service interface="org.apache.dubbo.samples.governance.api.DemoService" ref="demoService"/>
+
+
 
     <bean id="demoService2" class="org.apache.dubbo.samples.governance.impl.DemoServiceImpl2"/>
     <dubbo:service interface="org.apache.dubbo.samples.governance.api.DemoService2" ref="demoService2"/>

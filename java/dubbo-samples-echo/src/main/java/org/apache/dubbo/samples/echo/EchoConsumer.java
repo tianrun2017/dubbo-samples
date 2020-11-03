@@ -33,6 +33,6 @@ public class EchoConsumer {
 
         EchoService echoService = (EchoService) demoService;
         String status = (String) echoService.$echo("OK");
-        System.out.println("echo result: " + status);
+        System.err.println("========echo result: " + status);
     }
 }

@@ -31,7 +31,7 @@ public class BasicConsumer {
         DemoService demoService = context.getBean("demoService", DemoService.class);
         while (true) {
             String hello = demoService.sayHello("nacos");
-            System.out.println("result: " + hello);
+            System.err.println("result: " + hello);
             Thread.sleep(1000);
 
         }

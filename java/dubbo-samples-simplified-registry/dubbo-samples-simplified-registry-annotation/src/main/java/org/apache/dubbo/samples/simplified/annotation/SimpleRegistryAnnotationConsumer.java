@@ -60,6 +60,7 @@ public class SimpleRegistryAnnotationConsumer {
         public RegistryConfig registryConfig() {
             RegistryConfig registryConfig = new RegistryConfig();
             registryConfig.setAddress(zookeeperAddress);
+            //开启减化配置
             registryConfig.setSimplified(true);
             return registryConfig;
         }

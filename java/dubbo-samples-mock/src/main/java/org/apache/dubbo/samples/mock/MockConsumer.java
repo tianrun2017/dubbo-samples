@@ -31,6 +31,6 @@ public class MockConsumer {
         context.start();
         DemoService demoService = context.getBean("demoService", DemoService.class);
         String hello = demoService.sayHello("world");
-        logger.info("result: " + hello);
+        logger.warn("===============>result: " + hello);
     }
 }

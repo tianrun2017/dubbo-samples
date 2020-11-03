@@ -68,7 +68,9 @@ public class SimpleRegistryAnnotationProvider {
         public RegistryConfig registryConfig() {
             RegistryConfig registryConfig = new RegistryConfig();
             registryConfig.setAddress(zookeeperAddress);
+            //开启简化化配置
             registryConfig.setSimplified(true);
+            //registryConfig.setSimplified(false);
             registryConfig.setExtraKeys("retries,owner");
             return registryConfig;
         }

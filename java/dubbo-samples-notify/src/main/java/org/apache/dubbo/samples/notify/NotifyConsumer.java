@@ -19,6 +19,7 @@
 
 package org.apache.dubbo.samples.notify;
 
+import java.util.concurrent.CountDownLatch;
 import org.apache.dubbo.samples.notify.api.DemoService;
 import org.apache.dubbo.samples.notify.api.Notify;
 import org.apache.dubbo.samples.notify.impl.NotifyImpl;
@@ -34,17 +35,20 @@ public class NotifyConsumer {
         DemoService demoService = context.getBean("demoService", DemoService.class);
         NotifyImpl notify = context.getBean("demoCallback", NotifyImpl.class);
 
-        int id = 1;
+        int id = 11;
         String result = demoService.sayHello(id);
-        for (int i = 0; i < 10; i++) {
-            if (!notify.ret.containsKey(id)) {
-                Thread.sleep(200);
-            } else {
-                break;
-            }
+//        for (int i = 0; i < 10; i++) {
+//            if (!notify.ret.containsKey(id)) {
+//                Thread.sleep(200);
+//            } else {
+//                break;
+//            }
+//        }
+        if(id>10){
+            Thread.sleep(1000);
         }
-
-        System.out.println("result: " + notify.ret.get(id));
+        System.out.println("1result: " + result);
+        //System.out.println("2result: " + notify.ret.get(id));
     }
 }
 

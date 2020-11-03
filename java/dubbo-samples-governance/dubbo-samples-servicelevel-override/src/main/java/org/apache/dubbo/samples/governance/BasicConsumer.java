@@ -30,7 +30,7 @@ public class BasicConsumer {
         context.start();
 
         DemoService demoService = context.getBean("demoService", DemoService.class);
-        String hello = demoService.sayHello("world", 5000);
+        String hello = demoService.sayHello("world", 1000);
         System.err.println(hello);
 
         new CountDownLatch(1).await();

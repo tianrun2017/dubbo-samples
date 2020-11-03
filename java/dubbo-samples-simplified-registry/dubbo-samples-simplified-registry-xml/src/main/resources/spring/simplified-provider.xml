@@ -29,8 +29,12 @@
                     extra-keys="retries,owner"/>
 
     <bean id="demoService" class="org.apache.dubbo.samples.simplified.registry.xml.impl.DemoServiceImpl"/>
-    <dubbo:service async="true" interface="org.apache.dubbo.samples.simplified.registry.xml.api.DemoService"
-                   version="1.2.3" group="dubbo-simple" ref="demoService" executes="4500" retries="7" owner="vict"
+    <dubbo:service async="true" interface="org.apache.dubbo.samples.simplified.registry.xml.api.DemoService" ref="demoService"
+                   version="1.2.3"
+                   group="dubbo-simple"
+                   executes="4500"
+                   retries="7"
+                   owner="vict"
                    timeout="5300"/>
 
 </beans>

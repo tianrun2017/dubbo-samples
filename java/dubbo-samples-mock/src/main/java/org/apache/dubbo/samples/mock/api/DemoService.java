@@ -18,5 +18,6 @@
 package org.apache.dubbo.samples.mock.api;
 
 public interface DemoService {
+
     String sayHello(String name);
 }
